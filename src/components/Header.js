@@ -10,7 +10,7 @@ function Header() {
       <ul id="link--container">
         <li>
           <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-            Zug
+            Home
           </Link>
         </li>
         <li>
@@ -19,13 +19,19 @@ function Header() {
             to="/products"
             style={{ textDecoration: "none", color: "black" }}
           >
-            Products
+            Zug
           </Link>
         </li>
         <li>
           {" "}
           <Link to="" style={{ textDecoration: "none", color: "black" }}>
-            Shopping Cart
+            Biegung
+          </Link>
+        </li>
+        <li>
+          {" "}
+          <Link to="" style={{ textDecoration: "none", color: "black" }}>
+            Schub
           </Link>
         </li>
       </ul>
