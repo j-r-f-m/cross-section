@@ -1,3 +1,34 @@
-h1 {
-  color: red;
+body {
+  font-family: "Roboto", sans-serif;
+
+  background-color: lightgray;
+}
+
+.App {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  grid-template-rows: repeat(12, [row-start] 1fr);
+}
+
+#header--container {
+  grid-row: 1 / 2;
+  grid-column: 1 / 13;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  background-color: lightblue;
+  filter: drop-shadow(0px 5px 4px rgba(0, 0, 0, 0.2));
+
+  min-height: 5rem;
+}
+
+#link--container {
+  display: flex;
+}
+
+li {
+  margin-left: 2rem;
 }
