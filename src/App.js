@@ -3,6 +3,8 @@ import Header from "./components/Header.js";
 import { MathJaxContext } from "better-react-mathjax";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
+import Zug from "./components/Zug";
+import Biegung from "./components/Biegung";
 
 function App() {
   return (
@@ -12,7 +14,8 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="/products" element={<Products />} /> */}
+            <Route path="/zug" element={<Zug />} />
+            <Route path="/biegung" element={<Biegung />} />
           </Routes>
         </MathJaxContext>
       </BrowserRouter>

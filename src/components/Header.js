@@ -15,16 +15,16 @@ function Header() {
         </li>
         <li>
           {" "}
-          <Link
-            to="/products"
-            style={{ textDecoration: "none", color: "black" }}
-          >
+          <Link to="/zug" style={{ textDecoration: "none", color: "black" }}>
             Zug
           </Link>
         </li>
         <li>
           {" "}
-          <Link to="" style={{ textDecoration: "none", color: "black" }}>
+          <Link
+            to="/biegung"
+            style={{ textDecoration: "none", color: "black" }}
+          >
             Biegung
           </Link>
         </li>

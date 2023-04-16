@@ -1,7 +1,11 @@
 import React from "react";
 
 function Zug() {
-  return <div>Halllo</div>;
+  return (
+    <div id="zug--container">
+      <h2>Zug in Faserrichtung</h2>
+    </div>
+  );
 }
 
 export default Zug;
