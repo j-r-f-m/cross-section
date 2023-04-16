@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
 
-import Biegung from "./Biegung";
+import Biegung from "../Biegung";
 
 describe("Biegung", () => {
   it("render Biegung component", () => {

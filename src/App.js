@@ -1,10 +1,10 @@
-import "./styles/styles.css";
-import Header from "./components/Header.js";
+import "./assets/styles.css";
+import Header from "./pages/Header/Header.js";
 import { MathJaxContext } from "better-react-mathjax";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Zug from "./components/Zug";
-import Biegung from "./components/Biegung";
+import Home from "./pages/Home/Home";
+import Zug from "./pages/Zug/Zug";
+import Biegung from "./pages/Biegung/Biegung";
 
 function App() {
   return (
