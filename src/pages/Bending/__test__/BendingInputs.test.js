@@ -3,12 +3,12 @@ import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
 import { MathJax } from "better-react-mathjax";
 
-import Bending from "../Bending";
+import BendingInputs from "../BendingInputs";
 
 describe("Biegung", () => {
   it("render Biegung component", () => {
-    render(<Bending />);
-    // screen.debug();
+    render(<BendingInputs />);
+
     expect(screen.getByRole("heading")).toBeInTheDocument();
   });
 });
