@@ -2,13 +2,13 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
 
-import Biegung from "../Biegung";
+import Bending from "../Bending";
 
 describe("Biegung", () => {
   it("render Biegung component", () => {
     render(
       <BrowserRouter>
-        <Biegung />
+        <Bending />
       </BrowserRouter>
     );
     // screen.debug();

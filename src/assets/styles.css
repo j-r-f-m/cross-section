@@ -35,7 +35,7 @@ li {
 
 #home--container,
 #zug--container,
-#biegung--container {
+#bending--container {
   background-color: #c8b6a6;
   margin: 2rem;
   padding: 1rem;
@@ -54,7 +54,33 @@ li {
 }
 
 #zug--container,
-#biegung--container {
+#bending--container {
   grid-row: 3;
   grid-column: 2 / 12;
+}
+
+#bending--container {
+  min-width: 20rem;
+}
+
+/* ------------------ forms --------------------------- */
+
+#bending--inputs--container {
+  width: 20rem;
+}
+
+label {
+  display: grid;
+  grid-template-columns: repeat(3, [col-start] 1fr);
+  grid-template-rows: repeat(1, [row-start] 1fr);
+}
+
+input,
+span,
+h3 {
+  margin: 0.25rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
 }

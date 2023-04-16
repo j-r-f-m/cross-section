@@ -1,4 +1,3 @@
-import { MathJax } from "better-react-mathjax";
 import React from "react";
 import { Link } from "react-router-dom";
 

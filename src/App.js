@@ -4,7 +4,7 @@ import { MathJaxContext } from "better-react-mathjax";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Zug from "./pages/Zug/Zug";
-import Biegung from "./pages/Biegung/Biegung";
+import Biegung from "./pages/Bending/Bending";
 
 function App() {
   return (
