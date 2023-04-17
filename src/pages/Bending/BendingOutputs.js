@@ -13,10 +13,15 @@ function BendingOutputs(props) {
         {"\\(\\sigma_{m,y,d} = \\frac{M_y,d}{W_y}=\\)"}
         {props.state.data.sigma_myd}
       </MathJax>
-      <MathJax>
-        {"\\(f_{m,d}=\\frac{k_{mod}\\cdot f_{m,k}}{\\gamma_m}=\\)"}
-        {props.state.data.fmd}
-      </MathJax>
+
+      <div className="formula--container">
+        <MathJax>
+          {"\\(f_{m,d}=\\frac{k_{mod}\\cdot f_{m,k}}{\\gamma_m}=\\)"}
+        </MathJax>
+        <MathJax hideUntilTypeset={"first"} inline dynamic>
+          {`\\(${props.state.data.fmd}\\)`}
+        </MathJax>
+      </div>
     </div>
   );
 }

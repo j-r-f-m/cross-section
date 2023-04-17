@@ -88,3 +88,8 @@ h2 {
 #h3--outputs {
   margin-top: 1.5rem;
 }
+
+.formula--container {
+  display: flex;
+  align-items: center;
+}

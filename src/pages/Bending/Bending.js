@@ -3,6 +3,7 @@ import BendingInputs from "./BendingInputs";
 import BendingOutputs from "./BendingOutputs";
 import BtnCalc from "../../components/BtnCalc";
 import { wy, fmd, sigmaMd } from "../../utils/bendingCalc";
+import { MathJax } from "better-react-mathjax";
 
 function Bending() {
   const [state, setState] = useState({
@@ -94,6 +95,7 @@ function Bending() {
         sigma_myd: newSigmaMd,
       },
     });
+    // const test = MathJax.typesetPromise();
   };
 
   return (
