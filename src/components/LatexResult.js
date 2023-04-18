@@ -1,6 +1,7 @@
 import React from "react";
 import { MathJax } from "better-react-mathjax";
 
+// component that outputs latex
 function LatexResult(props) {
   return (
     <div className="formula--container">

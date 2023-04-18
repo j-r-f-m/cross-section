@@ -1,6 +1,7 @@
 import React from "react";
 import { MathJax } from "better-react-mathjax";
 
+/** compoent that rendes Latex*/
 function LatexInput({ variable, inputName, inputRef, unit }) {
   return (
     <label>
