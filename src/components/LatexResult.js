@@ -2,13 +2,14 @@ import React from "react";
 import { MathJax } from "better-react-mathjax";
 
 // component that outputs latex
-function LatexResult(props) {
+function LatexResult({ formula, result, unit }) {
   return (
     <div className="formula--container">
-      <MathJax>{props.formula}</MathJax>
+      <MathJax>{formula}</MathJax>
       <MathJax hideUntilTypeset={"first"} inline dynamic>
-        {props.result}
+        {result}
       </MathJax>
+      <MathJax>{unit}</MathJax>
     </div>
   );
 }
