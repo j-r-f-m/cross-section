@@ -8,7 +8,7 @@ function BendingOutputs(props) {
       <h3 id="h3--outputs">Outputs</h3>
 
       <LatexResult
-        formula={"\\(W_d = \\frac{b \\cdot h²}{6}= \\)"}
+        formula={"\\(W_{y,d} = \\frac{b \\cdot h²}{6}= \\)"}
         result={`\\(${props.state.data.wy}\\)`}
         unit={"\\(cm³\\)"}
       />

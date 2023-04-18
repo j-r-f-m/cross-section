@@ -1,9 +1,9 @@
 import React from "react";
 
 // simple button
-function BtnCalc(props) {
+function BtnCalc({ onSubmit }) {
   return (
-    <button type="button" onClick={props.calculate}>
+    <button type="button" onClick={onSubmit}>
       Berechnen
     </button>
   );
