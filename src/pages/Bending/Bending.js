@@ -3,6 +3,7 @@ import BendingInputs from "./BendingInputs";
 import BendingOutputs from "./BendingOutputs";
 
 function Bending() {
+  // object that holds data for calculation
   const [state, setState] = useState({
     data: {
       myd: 0,
@@ -17,6 +18,21 @@ function Bending() {
     },
   });
 
+  /**
+   * setState function save data for the calculation
+   * wrapping setState in a function allows us to pass it as a prop to a child
+   * component. Now we can manipulate the state of the parent component from the
+   * child component.
+   * @param {number} iptMyd
+   * @param {number} iptB
+   * @param {number} iptH
+   * @param {number} iptKmod
+   * @param {number} iptFmk
+   * @param {number} iptGammaM
+   * @param {number} iptWy
+   * @param {number} iptSigmaMd
+   * @param {number} iptFmd
+   */
   const setStateChild = (
     iptMyd,
     iptB,

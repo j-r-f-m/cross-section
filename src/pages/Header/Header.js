@@ -13,13 +13,11 @@ function Header() {
           </Link>
         </li>
         <li>
-          {" "}
           <Link to="/zug" style={{ textDecoration: "none", color: "black" }}>
             Zug
           </Link>
         </li>
         <li>
-          {" "}
           <Link
             to="/biegung"
             style={{ textDecoration: "none", color: "black" }}
@@ -28,7 +26,6 @@ function Header() {
           </Link>
         </li>
         <li>
-          {" "}
           <Link to="" style={{ textDecoration: "none", color: "black" }}>
             Schub
           </Link>

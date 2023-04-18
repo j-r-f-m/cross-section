@@ -1,8 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { MathJax } from "better-react-mathjax";
+
 import BtnCalc from "../../components/BtnCalc";
+import LatexInput from "../../components/LatexInput";
 import { wy, fmd, sigmaMd } from "../../utils/bendingCalc";
+
 function BendingInputs(props) {
+  // use href to access dom elemnt directly
   const inputRefMyd = useRef(null);
   const inputRefB = useRef(null);
   const inputRefH = useRef(null);
@@ -11,6 +15,7 @@ function BendingInputs(props) {
   const inputRefGammaM = useRef(null);
 
   const calculate = () => {
+    // call functions that calculate the wanted result
     const newWy = wy(
       Number(inputRefB.current.value),
       Number(inputRefH.current.value)
@@ -22,6 +27,7 @@ function BendingInputs(props) {
     );
     const newSigmaMd = sigmaMd(Number(inputRefMyd.current.value), newWy);
 
+    // set state of parent component
     props.setStateChild(
       Number(inputRefMyd.current.value),
       Number(inputRefB.current.value),
@@ -38,39 +44,46 @@ function BendingInputs(props) {
   return (
     <form id="bending--inputs--container">
       <h3>Inputs</h3>
+      <LatexInput
+        variable={"\\(M_{y,d}=\\)"}
+        inputName={"myd"}
+        inputRef={inputRefMyd}
+        unit={"\\([kNm]\\)"}
+      />
+      <hr />
+      <LatexInput
+        variable={"\\(b=\\)"}
+        inputName={"b"}
+        inputRef={inputRefB}
+        unit={"\\([kNm]\\)"}
+      />
+      <LatexInput
+        variable={"\\(h=\\)"}
+        inputName={"h"}
+        inputRef={inputRefH}
+        unit={"\\([kNm]\\)"}
+      />
+      <hr />
+      <LatexInput
+        variable={"\\(k_{mod}=\\)"}
+        inputName={"kmod"}
+        inputRef={inputRefKmod}
+        unit={"\\([-]\\)"}
+      />
+      <LatexInput
+        variable={"\\(f_{m,k}=\\)"}
+        inputName={"fmk"}
+        inputRef={inputRefFmk}
+        unit={"\\([kNm]\\)"}
+      />
 
-      <label>
-        {<MathJax>{"\\(M_{y,d}=\\)"}</MathJax>}
-        <input type="text" name="myd" ref={inputRefMyd} />
-        {<MathJax>{"\\([kNm]\\)"}</MathJax>}
-      </label>
-      <hr />
-      <label>
-        {<MathJax>{"\\(b=\\)"}</MathJax>}
-        <input type="text" name="b" ref={inputRefB} />
-        {<MathJax>{"\\([cm]\\)"}</MathJax>}
-      </label>
-      <label>
-        {<MathJax>{"\\(h=\\)"}</MathJax>}
-        <input type="text" name="h" ref={inputRefH} />
-        {<MathJax>{"\\([cm]\\)"}</MathJax>}
-      </label>
-      <hr />
-      <label>
-        {<MathJax>{"\\(k_{mod}=\\)"}</MathJax>}
-        <input type="text" name="kmod" ref={inputRefKmod} />
-        {<MathJax>{"\\([kN]\\)"}</MathJax>}
-      </label>
-      <label>
-        {<MathJax>{"\\(f_{m,k}=\\)"}</MathJax>}
-        <input type="text" name="fmk" ref={inputRefFmk} />
-        {<MathJax>{"\\([N/mm²]\\)"}</MathJax>}
-      </label>
-      <label>
-        {<MathJax>{"\\(\\gamma_{m}=\\)"}</MathJax>}
-        <input type="text" name="gammaM" ref={inputRefGammaM} />
-        {<MathJax>{"\\([-]\\)"}</MathJax>}
-      </label>
+      <LatexInput
+        variable={"\\(\\gamma_{m}=\\)"}
+        inputName={"gammaM"}
+        inputRef={inputRefGammaM}
+        unit={"\\([-]\\)"}
+      />
+
       <BtnCalc calculate={calculate} />
     </form>
   );
