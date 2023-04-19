@@ -64,9 +64,12 @@ function Bending() {
   return (
     <div id="bending--container">
       <h2>Einachsiger Biegespannungsnachweis:</h2>
-      <BendingInputs setStateChild={setStateChild} />
-      {/* <BtnCalc startCalculation={startCalculation} /> */}
-      <BendingOutputs state={state} />
+
+      <div id="bending--container--flex">
+        <BendingInputs setStateChild={setStateChild} />
+        {/* <BtnCalc startCalculation={startCalculation} /> */}
+        <BendingOutputs state={state} />
+      </div>
     </div>
   );
 }

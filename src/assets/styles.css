@@ -60,25 +60,23 @@ li {
 }
 
 #bending--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-width: 20rem;
 }
 
 /* ------------------ forms --------------------------- */
 
-#bending--inputs--container {
-  width: 20rem;
-}
-
-label {
-  display: grid;
-  grid-template-columns: repeat(3, [col-start] 1fr);
-  grid-template-rows: repeat(1, [row-start] 1fr);
-}
-
+button,
 input,
 span,
 h3 {
   margin: 0.25rem;
+}
+
+.input--error {
+  margin: 0.28rem;
 }
 
 h2 {
@@ -97,4 +95,35 @@ h2 {
 .error--container {
   grid-row: 2/3;
   grid-column: 2/3;
+}
+
+#bending--inputs--form {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-gap: 8px;
+  padding: 1em;
+}
+
+#bending--outputs--container {
+  padding: 1em;
+}
+
+form input {
+  border: 1px solid #9c9c9c;
+  width: 10rem;
+}
+
+button {
+  width: 5.256rem;
+}
+
+label {
+  /* text-align: right; */
+  grid-column: 1 / 2;
+}
+
+input,
+button,
+.input--error {
+  grid-column: 2 / 3;
 }

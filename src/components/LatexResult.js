@@ -6,6 +6,8 @@ function LatexResult({ formula, result, unit }) {
   return (
     <div className="formula--container">
       <MathJax>{formula}</MathJax>
+      {/*attributes needed, MathJax wont rerender typset after setState otherwise
+       */}
       <MathJax hideUntilTypeset={"first"} inline dynamic>
         {result}
       </MathJax>
