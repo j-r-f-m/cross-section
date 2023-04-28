@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import Home from "../Home";
+import Sidebar from "../Side";
 
-describe("Home", () => {
-  it("render Home component", () => {
-    render(<Home />);
+describe("Sidebar", () => {
+  it("render Side component", () => {
+    render(<Sidebar />);
     // screen.debug();
     expect(screen.getByRole("heading")).toBeInTheDocument();
   });

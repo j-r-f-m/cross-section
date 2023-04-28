@@ -63,7 +63,7 @@ function Bending() {
 
   return (
     <div id="bending--container">
-      <h2>Einachsiger Biegespannungsnachweis:</h2>
+      <h2 className="bending--h2">Einachsiger Biegespannungsnachweis:</h2>
 
       <div id="bending--container--flex">
         <BendingInputs setStateChild={setStateChild} />

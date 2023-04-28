@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
 body {
   font-family: "Roboto", sans-serif;
 
@@ -12,7 +13,10 @@ body {
   grid-template-rows: repeat(12, [row-start] 1fr);
 }
 
+/* ------------------------------ header ------------------------------------- */
+
 #header--container {
+  z-index: 1;
   grid-row: 1 / 2;
   grid-column: 1 / 13;
 
@@ -33,6 +37,8 @@ body {
 li {
   margin-left: 2rem;
 }
+
+/* ------------------------- pages --------------------------------- */
 
 #landing--container,
 #home--container,
@@ -73,7 +79,7 @@ li {
 
 /* ------------------ forms --------------------------- */
 
-button,
+.button--form,
 input,
 span,
 h3 {
@@ -84,7 +90,7 @@ h3 {
   margin: 0.28rem;
 }
 
-h2 {
+.bending--h2 {
   margin-bottom: 1rem;
 }
 
@@ -118,7 +124,7 @@ form input {
   width: 10rem;
 }
 
-button {
+.button--form {
   width: 5.256rem;
 }
 
@@ -128,14 +134,52 @@ label {
 }
 
 input,
-button,
+.button--form,
 .input--error {
   grid-column: 2 / 3;
 }
 /* ------------------ sidebar ----------------- */
 
 #sidebar--container {
-  background-color: blue;
-  grid-column: 1;
-  grid-row: 2 /12;
+  z-index: 2;
+  background-color: lightgray;
+  grid-column-start: 1;
+  grid-row: 2 /13;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#burgermenu {
+  margin: 0 0.5rem 0 1rem;
+}
+
+#sidebar--heading {
+  width: 15rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#sidebar--h2 {
+  margin-left: 0.5rem;
+}
+
+#sidebar--list {
+  margin-top: 1rem;
+}
+
+#sidebar--button--plus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.5rem;
+  background-color: lightgray;
+  border: none;
+}
+
+#sidebar--button--plus:hover {
+  background-color: grey;
 }
