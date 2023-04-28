@@ -5,8 +5,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Zug from "./pages/Zug/Zug";
 import Biegung from "./pages/Bending/Bending";
+import Landing from "./pages/Landing/Landing";
 
 // defining config for MathJax
+// see react-better MathJax documentation
 const config = {
   "fast-preview": {
     disabled: true,
@@ -35,6 +37,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/zug" element={<Zug />} />
             <Route path="/biegung" element={<Biegung />} />
+            <Route path="/landing" element={<Landing />} />
           </Routes>
         </MathJaxContext>
       </BrowserRouter>

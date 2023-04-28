@@ -1,7 +1,8 @@
 body {
   font-family: "Roboto", sans-serif;
 
-  background-color: #f1dec9;
+  /* background-color: #f2ebdd; */
+  background-color: white;
 }
 
 .App {
@@ -19,7 +20,7 @@ body {
   align-items: center;
   justify-content: space-around;
 
-  background-color: #8d7b68;
+  background-color: #fc7a57;
   filter: drop-shadow(0px 5px 4px rgba(0, 0, 0, 0.2));
 
   min-height: 5rem;
@@ -33,23 +34,27 @@ li {
   margin-left: 2rem;
 }
 
+#landing--container,
 #home--container,
 #zug--container,
 #bending--container {
-  background-color: #c8b6a6;
+  /* background-color: lightgray; */
+  border: 2px solid gray;
   margin: 2rem;
   padding: 1rem;
   border-radius: 1.5rem;
 }
 
 /* change name i can not tell which card i am looking  at */
+#landing--container,
 #home--container {
   grid-row: 3 / 7;
-  grid-column: 2 / 6;
+  grid-column: 5 / 9;
 
   min-width: 15rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   filter: drop-shadow(0px 5px 4px rgba(0, 0, 0, 0.2));
 }
 

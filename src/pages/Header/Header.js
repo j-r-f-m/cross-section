@@ -8,6 +8,14 @@ function Header() {
 
       <ul id="link--container">
         <li>
+          <Link
+            to="/landing"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            Landing
+          </Link>
+        </li>
+        <li>
           <Link to="/" style={{ textDecoration: "none", color: "black" }}>
             Home
           </Link>
@@ -23,11 +31,6 @@ function Header() {
             style={{ textDecoration: "none", color: "black" }}
           >
             Biegung
-          </Link>
-        </li>
-        <li>
-          <Link to="" style={{ textDecoration: "none", color: "black" }}>
-            Schub
           </Link>
         </li>
       </ul>
