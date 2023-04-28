@@ -8,15 +8,12 @@ function Header() {
 
       <ul id="link--container">
         <li>
-          <Link
-            to="/landing"
-            style={{ textDecoration: "none", color: "black" }}
-          >
+          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
             Landing
           </Link>
         </li>
         <li>
-          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+          <Link to="/home" style={{ textDecoration: "none", color: "black" }}>
             Home
           </Link>
         </li>
