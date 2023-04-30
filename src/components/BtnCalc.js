@@ -1,6 +1,6 @@
 import React from "react";
 
-// simple button
+// button for starting calculations
 function BtnCalc({ onSubmit }) {
   return (
     <button type="button" onClick={onSubmit}>

@@ -1,4 +1,5 @@
 import "./assets/styles.css";
+import React, { useState } from "react";
 import Header from "./pages/Header/Header.js";
 import { MathJaxContext } from "better-react-mathjax";
 import { BrowserRouter, Routes, Route, RouterProvider } from "react-router-dom";
@@ -7,14 +8,6 @@ import Zug from "./pages/Zug/Zug";
 import Biegung from "./pages/Bending/Bending";
 import Landing from "./pages/Landing/Landing";
 import Side from "./pages/Side/Side";
-
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
 // defining config for MathJax
 // see react-better MathJax documentation
@@ -36,18 +29,46 @@ const config = {
 };
 
 function App() {
+  // main data structure
+  const [projects, setProjects] = useState([
+    {
+      name: "test project 1",
+      positions: [
+        {
+          name: "name of position",
+          calculations: [
+            {
+              name: "Einachsiger Biegespannungsnachweis",
+              myd: 4.09,
+              b: 8,
+              h: 22,
+              kmod: 0.9,
+              fmk: 24,
+              gamma_m: 1.3,
+              wy: 645.33,
+              sigma_myd: 6.3,
+              fmd: 16.6,
+            },
+          ],
+        },
+      ],
+    },
+  ]);
+
+  const [pageNameArray, setPageNameArray] = useState(["Home"]);
+
   return (
     <div className="App">
       <BrowserRouter>
         {/* setting options to MathJax by passing props */}
         <MathJaxContext version={3} config={config}>
           <Header />
-          <Side />
+          <Side projects={projects} />
           <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/home" element={<Home />} />
+            {/*             <Route path="/" element={<Landing />} /> */}
+            <Route path="/home" element={<Home projects={projects} />} />
             <Route path="/biegung" element={<Biegung />} />
-            <Route path="/zug" element={<Zug />} />
+            {/*             <Route path="/zug" element={<Zug />} /> */}
           </Routes>
         </MathJaxContext>
       </BrowserRouter>
