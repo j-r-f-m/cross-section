@@ -231,3 +231,10 @@ input,
 }
 
 /* ------------------------------- Modal ---------------------------------- */
+#modal--close--btn {
+  border: "none";
+  padding: "0px";
+  display: "flex";
+  align-items: "center";
+  background-color: "lightgrey";
+}

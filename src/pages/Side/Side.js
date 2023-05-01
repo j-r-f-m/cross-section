@@ -2,10 +2,21 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import AddIcon from "@mui/icons-material/Add";
 import MoreHoriz from "@mui/icons-material/MoreHoriz";
+import CloseIcon from "@mui/icons-material/Close";
+import { useForm } from "react-hook-form";
 
 /* add custom styles to react-modal */
 const customStyles = {
-  content: {},
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "lightgrey",
+    minWidth: "25rem",
+  },
   overlay: { zIndex: 1000 },
 };
 
@@ -15,13 +26,19 @@ const customStyles = {
  * @returns
  */
 function Side(props) {
-  const handlePlusBtn = (e) => {
-    e.preventDefault();
-    console.log("sidebar click");
-  };
-
   const [modalIsOpen, setIsOpen] = useState(false);
 
+  /* form */
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => console.log(data);
+  console.log(errors);
+
+  /* modal functions */
   function openModal() {
     setIsOpen(true);
   }
@@ -29,6 +46,11 @@ function Side(props) {
   function closeModal() {
     setIsOpen(false);
   }
+
+  const handlePlusBtn = (e) => {
+    e.preventDefault();
+    console.log("sidebar click");
+  };
 
   return (
     <>
@@ -42,7 +64,7 @@ function Side(props) {
 
         <ul id="sidebar--list">
           {props.projects.map((prj) => (
-            <li className="sidebar--list--element">
+            <li key={prj.name} className="sidebar--list--element">
               {/*     <h2>{prj.name}</h2> */}
 
               <button className="sidebar--open--btn">{prj.name}</button>
@@ -55,9 +77,45 @@ function Side(props) {
       </aside>
 
       <Modal id="add--modal" isOpen={modalIsOpen} style={customStyles}>
-        <h2>Hello</h2>
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
+        <header
+          className="modal--header"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <h2>Create a new Project</h2>
+          <button
+            id="modal--close--btn"
+            onClick={closeModal}
+            style={{
+              border: "none",
+              padding: "0px",
+              display: "flex",
+              alignItems: "center",
+              backgroundColor: "lightgrey",
+              ":hover": {
+                backgroundColor: "grey",
+              },
+            }}
+          >
+            {<CloseIcon />}
+          </button>
+        </header>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input
+            type="text"
+            placeholder="Project Name:"
+            {...register("prjName:", { required: true, max: 50 })}
+          />
+          {errors?.prjName?.type === "required" && (
+            <p className="input--error">Please enter a number</p>
+          )}
+
+          <input type="submit" />
+        </form>
       </Modal>
     </>
   );
