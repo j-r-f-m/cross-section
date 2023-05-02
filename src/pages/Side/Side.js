@@ -32,11 +32,25 @@ function Side(props) {
   const {
     register,
     handleSubmit,
+    //1
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
-  console.log(errors);
+  // create const to save registerOptions -> cleaner code
+  const registerOptions = {
+    required: {
+      value: true,
+      message: "Please enter a name",
+    },
+  };
+
+  const onFormSubmit = (data) => {
+    console.log(data);
+  };
+  //1
+  // console.log(errors);
+
+  const onFormError = (errors) => console.error(errors);
 
   /* modal functions */
   function openModal() {
@@ -76,7 +90,13 @@ function Side(props) {
         </ul>
       </aside>
 
-      <Modal id="add--modal" isOpen={modalIsOpen} style={customStyles}>
+      {/* create Modal component -> cleaner code */}
+      <Modal
+        appElement={document.getElementById("sidebar--container")}
+        id="add--modal"
+        isOpen={modalIsOpen}
+        style={customStyles}
+      >
         <header
           className="modal--header"
           style={{
@@ -104,14 +124,22 @@ function Side(props) {
           </button>
         </header>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <input
-            type="text"
-            placeholder="Project Name:"
-            {...register("prjName:", { required: true, max: 50 })}
-          />
-          {errors?.prjName?.type === "required" && (
-            <p className="input--error">Please enter a number</p>
+        <form
+          id="form--create--project"
+          onSubmit={handleSubmit(onFormSubmit, onFormError)}
+        >
+          <div id="input--container">
+            <label>Project Name:</label>
+            <input
+              name="projectName"
+              type="text"
+              placeholder="Project Name:"
+              {...register("projectName", registerOptions)}
+            />
+          </div>
+
+          {errors?.projectName && (
+            <p className="input--error">Please enter a project name</p>
           )}
 
           <input type="submit" />

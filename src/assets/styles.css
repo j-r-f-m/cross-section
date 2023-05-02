@@ -238,3 +238,18 @@ input,
   align-items: "center";
   background-color: "lightgrey";
 }
+
+.input--error,
+#input--container {
+  margin-top: 0.5rem;
+}
+
+.input--error {
+  color: red;
+}
+
+#form--create--project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

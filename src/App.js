@@ -8,6 +8,7 @@ import Zug from "./pages/Zug/Zug";
 import Biegung from "./pages/Bending/Bending";
 import Landing from "./pages/Landing/Landing";
 import Side from "./pages/Side/Side";
+import Modal from "react-modal";
 
 // defining config for MathJax
 // see react-better MathJax documentation
@@ -58,7 +59,7 @@ function App() {
   const [pageNameArray, setPageNameArray] = useState(["Home"]);
 
   return (
-    <div className="App">
+    <div className="App" id="app--container">
       <BrowserRouter>
         {/* setting options to MathJax by passing props */}
         <MathJaxContext version={3} config={config}>
