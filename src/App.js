@@ -56,7 +56,7 @@ function App() {
     },
   ]);
 
-  const [pageNameArray, setPageNameArray] = useState(["Home"]);
+  // const [pageNameArray, setPageNameArray] = useState(["Home"]);
 
   return (
     <div className="App" id="app--container">
