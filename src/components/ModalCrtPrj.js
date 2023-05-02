@@ -37,7 +37,10 @@ function ModalCrtPrj(props) {
   };
 
   const onFormSubmit = (data) => {
-    console.log(data);
+    console.log(data.projectName);
+
+    props.setProjectChild(data.projectName);
+    props.closeModalChild();
   };
 
   const onFormError = (errors) => console.error(errors);
@@ -93,7 +96,7 @@ function ModalCrtPrj(props) {
           <p className="input--error">Please enter a project name</p>
         )}
 
-        <input type="submit" />
+        <input type="submit" value="Create Project" />
       </form>
     </Modal>
   );

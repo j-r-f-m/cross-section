@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import MoreHoriz from "@mui/icons-material/MoreHoriz";
-
 import ModalCrtPrj from "../../components/ModalCrtPrj";
 
 /**
@@ -41,8 +40,8 @@ function Side(props) {
 
         <ul id="sidebar--list">
           {props.projects.map((prj) => (
-            <li key={prj.name} className="sidebar--list--element">
-              <button className="sidebar--open--btn">{prj.name}</button>
+            <li key={prj.projectName} className="sidebar--list--element">
+              <button className="sidebar--open--btn">{prj.projectName}</button>
               <button className="sidebar--dots--btn">
                 <MoreHoriz />
               </button>
@@ -50,9 +49,15 @@ function Side(props) {
           ))}
         </ul>
       </aside>
+
       <ModalCrtPrj
+        /**
+         *  pass parent state and function to manipulate parent state to child
+         *  component as props
+         *  */
         closeModalChild={closeModalChild}
         modalIsOpen={modalIsOpen}
+        setProjectChild={props.setProjectsChild}
       />
     </>
   );

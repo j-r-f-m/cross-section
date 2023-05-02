@@ -30,16 +30,21 @@ const config = {
 };
 
 function App() {
-  // main data structure
+  /**
+   * main data-structure
+   *
+   * projects-array -> project-objects with calculations-array ->
+   * -> calculations-array -> objects containing calculation inputs and outputs
+   */
   const [projects, setProjects] = useState([
     {
-      name: "test project 1",
-      positions: [
+      projectName: "test project 1",
+      positionsArr: [
         {
-          name: "name of position",
-          calculations: [
+          positionName: "name of position",
+          calculationsArr: [
             {
-              name: "Einachsiger Biegespannungsnachweis",
+              calculationName: "Einachsiger Biegespannungsnachweis",
               myd: 4.09,
               b: 8,
               h: 22,
@@ -56,6 +61,34 @@ function App() {
     },
   ]);
 
+  /**
+   * updates projects array with a new project
+   * @param {string} projectName give new project a name
+   *
+   * function to change Projects from a child component
+   *
+   */
+  const setProjectsChild = (projectName) => {
+    console.log("lol");
+    setProjects([
+      // copy old project-array
+      ...projects,
+      // add new project-object as last element
+      {
+        projectName: `${projectName}`,
+        // position-array
+        positionsArr: [
+          // position-objects
+          {
+            positionName: "",
+            // calculations-array
+            calculations: [],
+          },
+        ],
+      },
+    ]);
+  };
+
   // const [pageNameArray, setPageNameArray] = useState(["Home"]);
 
   return (
@@ -64,7 +97,7 @@ function App() {
         {/* setting options to MathJax by passing props */}
         <MathJaxContext version={3} config={config}>
           <Header />
-          <Side projects={projects} />
+          <Side projects={projects} setProjectsChild={setProjectsChild} />
           <Routes>
             {/*             <Route path="/" element={<Landing />} /> */}
             <Route path="/home" element={<Home projects={projects} />} />

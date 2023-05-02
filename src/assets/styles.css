@@ -86,11 +86,19 @@ li {
 }
 
 #home--container {
-  grid-row-start: 2;
+  grid-row: 2/13;
   grid-column: 2 / 13;
-
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home--prj--card {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 2px solid gray;
+  display: inline-block;
+  border-radius: 1.5rem;
 }
 
 /* ------------------ forms --------------------------- */
@@ -222,13 +230,6 @@ input,
   margin-left: 0.5rem;
 }
 /* ------------------------------ cards ------------------------------------ */
-.home--prj--card {
-  margin-top: 2rem;
-  padding: 1rem;
-  border: 2px solid gray;
-
-  border-radius: 1.5rem;
-}
 
 /* ------------------------------- Modal ---------------------------------- */
 #modal--close--btn {
