@@ -84,7 +84,7 @@ li {
   align-items: center;
   min-width: 20rem;
 }
-
+#positions--container,
 #home--container {
   grid-row: 2/13;
   grid-column: 2 / 13;

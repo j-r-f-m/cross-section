@@ -3,6 +3,7 @@ import AddIcon from "@mui/icons-material/Add";
 import MoreHoriz from "@mui/icons-material/MoreHoriz";
 import ModalCrtPrj from "../../components/ModalCrtPrj";
 import CloseIcon from "@mui/icons-material/Close";
+import { Link } from "react-router-dom";
 
 /**
  * sidebar component
@@ -30,11 +31,17 @@ function Side(props) {
   }
 
   /**
-   * delete project
+   * get project by id
+   *
    */
 
-  const deleteProject = () => {
-    console.log(props);
+  const getProjectById = (e) => {
+    console.log(e.target.id);
+    const searchedProject = props.projects.find(
+      (prj) => prj.id === e.target.id
+    );
+    console.log(searchedProject);
+    props.setCurrentProjectIdChild(searchedProject.id);
   };
 
   return (
@@ -49,12 +56,17 @@ function Side(props) {
 
         <ul id="sidebar--list">
           {props.projects.map((prj) => (
-            <li
-              key={prj.id}
-              id={`${prj.id}`}
-              className="sidebar--list--element"
-            >
-              <button className="sidebar--open--btn">{prj.projectName}</button>
+            <li key={prj.id} className="sidebar--list--element">
+              {/* change button to link for navigation */}
+              {/* <button className="sidebar--open--btn">{prj.projectName}</button> */}
+              <Link
+                id={`${prj.id}`}
+                to="/positions"
+                style={{ textDecoration: "none", color: "black" }}
+                onClick={getProjectById}
+              >
+                {prj.projectName}
+              </Link>
               <button className="sidebar--dots--btn">
                 <CloseIcon id={prj.id} onClick={props.setPrjsChildDlt} />
               </button>
