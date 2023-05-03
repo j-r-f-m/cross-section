@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import MoreHoriz from "@mui/icons-material/MoreHoriz";
 import ModalCrtPrj from "../../components/ModalCrtPrj";
+import CloseIcon from "@mui/icons-material/Close";
 
 /**
  * sidebar component
@@ -28,6 +29,14 @@ function Side(props) {
     setIsOpen(true);
   }
 
+  /**
+   * delete project
+   */
+
+  const deleteProject = () => {
+    console.log(props);
+  };
+
   return (
     <>
       <aside id="sidebar--container">
@@ -40,10 +49,14 @@ function Side(props) {
 
         <ul id="sidebar--list">
           {props.projects.map((prj) => (
-            <li key={prj.projectName} className="sidebar--list--element">
+            <li
+              key={prj.id}
+              id={`${prj.id}`}
+              className="sidebar--list--element"
+            >
               <button className="sidebar--open--btn">{prj.projectName}</button>
               <button className="sidebar--dots--btn">
-                <MoreHoriz />
+                <CloseIcon id={prj.id} onClick={props.setPrjsChildDlt} />
               </button>
             </li>
           ))}

@@ -9,6 +9,7 @@ import Biegung from "./pages/Bending/Bending";
 import Landing from "./pages/Landing/Landing";
 import Side from "./pages/Side/Side";
 import Modal from "react-modal";
+import uniqid from "uniqid";
 
 // defining config for MathJax
 // see react-better MathJax documentation
@@ -39,6 +40,7 @@ function App() {
   const [projects, setProjects] = useState([
     {
       projectName: "test project 1",
+      id: uniqid(),
       positionsArr: [
         {
           positionName: "name of position",
@@ -76,6 +78,7 @@ function App() {
       // add new project-object as last element
       {
         projectName: `${projectName}`,
+        id: uniqid(),
         // position-array
         positionsArr: [
           // position-objects
@@ -89,6 +92,15 @@ function App() {
     ]);
   };
 
+  /**
+   * delete project from projects array
+   * pass function to child (side)
+   */
+  const setPrjsChildDlt = (e) => {
+    console.log(e.currentTarget.id);
+    setProjects(projects.filter((prj) => prj.id !== e.currentTarget.id));
+  };
+
   // const [pageNameArray, setPageNameArray] = useState(["Home"]);
 
   return (
@@ -97,7 +109,11 @@ function App() {
         {/* setting options to MathJax by passing props */}
         <MathJaxContext version={3} config={config}>
           <Header />
-          <Side projects={projects} setProjectsChild={setProjectsChild} />
+          <Side
+            projects={projects}
+            setProjectsChild={setProjectsChild}
+            setPrjsChildDlt={setPrjsChildDlt}
+          />
           <Routes>
             {/*             <Route path="/" element={<Landing />} /> */}
             <Route path="/home" element={<Home projects={projects} />} />
