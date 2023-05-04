@@ -9,9 +9,7 @@ function Home(props) {
         </div>
       ))} */}
 
-      <p className="home--prj--card">
-        dummy content NOt sure what to display in HOme
-      </p>
+      <p className="card">HOME</p>
     </div>
   );
 }

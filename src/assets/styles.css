@@ -93,11 +93,23 @@ li {
   align-items: center;
 }
 
-.home--prj--card {
+#positions--heading {
+  margin-top: 2rem;
+}
+
+.card {
   margin-top: 2rem;
   padding: 1rem;
   border: 2px solid gray;
   display: inline-block;
+  border-radius: 1.5rem;
+}
+
+.add--position--btn {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 2px solid gray;
+  display: flex;
   border-radius: 1.5rem;
 }
 

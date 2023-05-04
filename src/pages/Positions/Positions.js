@@ -1,48 +1,63 @@
 import React from "react";
-
+import AddIcon from "@mui/icons-material/Add";
+/**
+ * Positions.js gets called when user clicks on project-link in the sidebar
+ * user wants to access the different positions belonging to a project
+ * @param {*} props
+ * @returns
+ */
 function Positions(props) {
-  const getProjectById = () => {
-    // console.log(e.target.id);
-    // const searchedProject = props.projects.find(
-    //   (prj) => prj.id === e.target.id
-    // );
-    // console.log(searchedProject);
-    // console.log("hi");
-    // const searchedProject = props.projects.find(
-    //   (prj) => prj.id === e.target.id
-    // );
-  };
-
+  /**
+   *  gets fired when Postions.js is called
+   *  find project by passed project-id ("props.currentProjectId")
+   *  we need the project object the user wants to see in order to access the
+   *  positons-array
+   *  if seachedProject is undefined then no other project exists
+   */
   const searchedProject = props.projects.find(
     (prj) => prj.id === props.currentProjectId
   );
 
-  function PositionShow({ show }) {
-    if (show && searchedProject.projectName) {
+  /**
+   *
+   * if the passeed string is not empty
+   * @param {object} param0 object containing project-id string
+   * @returns positions of clicked project or an empty scrren
+   * if state of "currentProjectId" is truthy (empty string is falsy "" = flasy)
+   * a project has been clicked by the user -> show positons of clicked project
+   *
+   * if searchedProject.projectName is truthy a project with an id-string that
+   * equals the state string currenProjectId still exists
+   *
+   */
+  function PositionShow({ currentProjectId }) {
+    if (currentProjectId && searchedProject.projectName) {
       return (
-        <div>
-          <p>{searchedProject.projectName}</p>
+        <>
+          <h2 class="positions--heading">{searchedProject.projectName}</h2>
           {searchedProject.positionsArr.map((posi) => (
-            <div key={posi.positionName} className="home--prj--card">
+            <div key={posi.positionName} className="card">
               <h2>{posi.positionName}</h2>
             </div>
           ))}
-        </div>
+          <button className="add--position--btn">
+            <p>Add Position </p>
+            <AddIcon />
+          </button>
+        </>
       );
     }
-    return <h1>Positions - </h1>;
+    return (
+      <h2 className="positions--heading">
+        Select Project or create new Project
+      </h2>
+    );
   }
 
-  const positonArrTest = getProjectById(console.log(searchedProject));
   return (
     <div id="positions--container">
-      {/* {searchedProject.positionsArr.map((posi) => (
-        <div key={posi.positionName} className="home--prj--card">
-          <h2>{posi.positionName}</h2>
-        </div>
-      ))} */}
-      <PositionShow show={props.currentProjectId} />
-      <p>{console.log(searchedProject)}</p>
+      <PositionShow currentProjectId={props.currentProjectId} />
+      {/* <p>{console.log(searchedProject)}kk</p> */}
     </div>
   );
 }

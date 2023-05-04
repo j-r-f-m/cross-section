@@ -31,16 +31,18 @@ function Side(props) {
   }
 
   /**
-   * get project by id
-   *
+   * set state for setCurrentProjectId in App.js
+   * save the id of the project the user selected by clicking on the link in the
+   * sidebar
+   * get id from the "Link" dom element
+   * @param {object} e event-object from button click
    */
 
   const getProjectById = (e) => {
-    console.log(e.target.id);
     const searchedProject = props.projects.find(
       (prj) => prj.id === e.target.id
     );
-    console.log(searchedProject);
+    // set state for setCurrentProjectId in App.js
     props.setCurrentProjectIdChild(searchedProject.id);
   };
 
@@ -59,6 +61,8 @@ function Side(props) {
             <li key={prj.id} className="sidebar--list--element">
               {/* change button to link for navigation */}
               {/* <button className="sidebar--open--btn">{prj.projectName}</button> */}
+
+              {/* link to Positions.js */}
               <Link
                 id={`${prj.id}`}
                 to="/positions"
@@ -67,6 +71,7 @@ function Side(props) {
               >
                 {prj.projectName}
               </Link>
+              {/* delete button */}
               <button className="sidebar--dots--btn">
                 <CloseIcon id={prj.id} onClick={props.setPrjsChildDlt} />
               </button>

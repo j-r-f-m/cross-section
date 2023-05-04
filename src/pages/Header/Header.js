@@ -21,7 +21,7 @@ function Header() {
           </Link>
         </li> */}
         <li>
-          <Link to="/home" style={{ textDecoration: "none", color: "black" }}>
+          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
             Home
           </Link>
         </li>

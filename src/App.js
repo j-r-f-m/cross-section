@@ -158,14 +158,14 @@ function App() {
   };
 
   /**
-   * change state of cu
+   *
    * @param {string} projectId id of project the user wants to see
    *
    * the user wants to see the positions of one project
    * we need to pass the id of the project the user wants to inspect
    * in order to do so we get the id from the user clicking on the project-link
-   * in the sidebar and saving it to state we can then access the the id in the
-   * positions component
+   * in the sidebar and saving it to state. we can then access the the id in the
+   * positions component by passing it as a prop
    *
    */
   const setCurrentProjectIdChild = (projectId) => {
@@ -177,11 +177,14 @@ function App() {
   /**
    * delete project from projects array
    * pass function to child (side)
-   * Add prompt so user needs to confirm deletion
+   * -- Add prompt so user needs to confirm deletion
    */
   const setPrjsChildDlt = (e) => {
     console.log(e.currentTarget.id);
     setProjects(projects.filter((prj) => prj.id !== e.currentTarget.id));
+
+    // reset state for currentProjectId because the id does no exist after
+    // corresponding project got deleted
     setCurrentProjectId("");
   };
 
@@ -202,6 +205,10 @@ function App() {
           />
           <Routes>
             {/*             <Route path="/" element={<Landing />} /> */}
+
+            {/* default page */}
+            <Route path="/" element={<Home projects={projects} />} />
+            {/* links */}
             <Route path="/home" element={<Home projects={projects} />} />
             <Route path="/biegung" element={<Biegung />} />
             <Route
