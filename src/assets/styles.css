@@ -93,7 +93,7 @@ li {
   align-items: center;
 }
 
-#positions--heading {
+.positions--heading {
   margin-top: 2rem;
 }
 
@@ -111,6 +111,11 @@ li {
   border: 2px solid gray;
   display: flex;
   border-radius: 1.5rem;
+  align-items: center;
+}
+
+.add--position--btn:hover {
+  background-color: grey;
 }
 
 /* ------------------ forms --------------------------- */

@@ -158,6 +158,38 @@ function App() {
   };
 
   /**
+   * create a new position object -> add position-object to specifieed project's
+   * position-array
+   * @param {string} projectId id of porject we want to add the position ton
+   *
+   * function to change positions-array from a child component
+   * -> use function in ModalCrtPrj.js
+   */
+  const setPositionsChild = (projectId, newPositonName) => {
+    console.log("lol");
+    // get index of project we want to change the position in
+    const currentProjectIndex = projects.findIndex(
+      (prj) => prj.id === projectId
+    );
+    // create new object with the contents of the project we want to change
+    const updatedProject = Object.assign({}, projects[currentProjectIndex]);
+    // update positions-array with new empty position-object
+    console.log(updatedProject);
+    updatedProject.positionsArr = [
+      ...updatedProject.positionsArr,
+      { positionName: newPositonName, calculationsArr: [] },
+    ];
+
+    const updatedProjectsArray = [
+      ...projects.slice(0, currentProjectIndex),
+      updatedProject,
+      ...projects.slice(currentProjectIndex + 1),
+    ];
+
+    setProjects(updatedProjectsArray);
+  };
+
+  /**
    *
    * @param {string} projectId id of project the user wants to see
    *
@@ -217,6 +249,7 @@ function App() {
                 <Positions
                   projects={projects}
                   currentProjectId={currentProjectId}
+                  setPositionsChild={setPositionsChild}
                 />
               }
             />

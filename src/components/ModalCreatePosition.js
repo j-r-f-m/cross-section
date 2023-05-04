@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import Modal from "react-modal";
 import CloseIcon from "@mui/icons-material/Close";
 
-function ModalCrtPrj(props) {
+function ModalCreatePosition(props) {
   //   const [modalIsOpen, setIsOpen] = useState(false);
-
+  const ref = useRef(null);
   /* add custom styles to react-modal */
   const customStyles = {
     content: {
@@ -38,10 +38,19 @@ function ModalCrtPrj(props) {
 
   // functions need to be passed from parent
   const onFormSubmit = (data) => {
-    console.log(data.projectName);
-
-    props.setProjectChild(data.projectName);
+    /**
+     * add a new position-object to the positions-array of the specified project
+     *
+     */
+    console.log(data);
+    props.setPositionsChild(props.currentProjectId, data.positionName);
     props.closeModalChild();
+    ref.current.value = "";
+  };
+
+  const wrapHref = () => {
+    props.closeModalChild();
+    ref.current.value = "";
   };
 
   const onFormError = (errors) => console.error(errors);
@@ -62,10 +71,10 @@ function ModalCrtPrj(props) {
           alignItems: "center",
         }}
       >
-        <h2>Create a new Project</h2>
+        <h2>Create a new Position</h2>
         <button
           id="modal--close--btn"
-          onClick={props.closeModalChild}
+          onClick={wrapHref}
           style={{
             border: "none",
             padding: "0px",
@@ -86,23 +95,24 @@ function ModalCrtPrj(props) {
         onSubmit={handleSubmit(onFormSubmit, onFormError)}
       >
         <div id="input--container">
-          <label>Project Name:</label>
+          <label>Position Name:</label>
           <input
-            name="projectName"
+            ref={ref}
+            name="positionName"
             type="text"
-            placeholder="Project Name:"
-            {...register("projectName", registerOptions)}
+            placeholder="Position Name:"
+            {...register("positionName", registerOptions)}
           />
         </div>
 
-        {errors?.projectName && (
-          <p className="input--error">Please enter a project name</p>
+        {errors?.positionName && (
+          <p className="input--error">Please enter a position name</p>
         )}
 
-        <input type="submit" value="Create Project" />
+        <input type="submit" value="Create Position" />
       </form>
     </Modal>
   );
 }
 
-export default ModalCrtPrj;
+export default ModalCreatePosition;

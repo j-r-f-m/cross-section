@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
+import ModalCreatePosition from "../../components/ModalCreatePosition";
 /**
  * Positions.js gets called when user clicks on project-link in the sidebar
  * user wants to access the different positions belonging to a project
@@ -7,6 +8,25 @@ import AddIcon from "@mui/icons-material/Add";
  * @returns
  */
 function Positions(props) {
+  // state for modal
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  /**
+   * manipulate function from ModalCrtPrj.js
+   * pass a function with the ability to change state of the parent component
+   * to a child component
+   */
+  const closeModalChild = () => {
+    setIsOpen(false);
+  };
+
+  /**
+   * open ModalCrtPrj.js
+   */
+  function openModal() {
+    setIsOpen(true);
+  }
+
   /**
    *  gets fired when Postions.js is called
    *  find project by passed project-id ("props.currentProjectId")
@@ -34,13 +54,13 @@ function Positions(props) {
     if (currentProjectId && searchedProject.projectName) {
       return (
         <>
-          <h2 class="positions--heading">{searchedProject.projectName}</h2>
+          <h2 className="positions--heading">{searchedProject.projectName}</h2>
           {searchedProject.positionsArr.map((posi) => (
             <div key={posi.positionName} className="card">
               <h2>{posi.positionName}</h2>
             </div>
           ))}
-          <button className="add--position--btn">
+          <button className="add--position--btn" onClick={openModal}>
             <p>Add Position </p>
             <AddIcon />
           </button>
@@ -55,10 +75,19 @@ function Positions(props) {
   }
 
   return (
-    <div id="positions--container">
-      <PositionShow currentProjectId={props.currentProjectId} />
-      {/* <p>{console.log(searchedProject)}kk</p> */}
-    </div>
+    <>
+      <div id="positions--container">
+        <PositionShow currentProjectId={props.currentProjectId} />
+        {/* <p>{console.log(searchedProject)}kk</p> */}
+      </div>
+
+      <ModalCreatePosition
+        closeModalChild={closeModalChild}
+        modalIsOpen={modalIsOpen}
+        setPositionsChild={props.setPositionsChild}
+        currentProjectId={props.currentProjectId}
+      />
+    </>
   );
 }
 
