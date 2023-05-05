@@ -50,6 +50,18 @@ li {
 
 /* ------------------------- pages --------------------------------- */
 
+.heading--main {
+  margin-top: 2rem;
+}
+
+.main--container {
+  grid-row: 2/13;
+  grid-column: 2 / 13;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #landing--container,
 #zug--container,
 #bending--container {
@@ -93,15 +105,14 @@ li {
   align-items: center;
 }
 
-.positions--heading {
-  margin-top: 2rem;
-}
-
 .card {
   margin-top: 2rem;
   padding: 1rem;
   border: 2px solid gray;
-  display: inline-block;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 1.5rem;
 }
 
@@ -109,8 +120,10 @@ li {
   margin-top: 2rem;
   padding: 1rem;
   border: 2px solid gray;
-  display: flex;
   border-radius: 1.5rem;
+
+  display: flex;
+  align-content: center;
   align-items: center;
 }
 
@@ -118,6 +131,21 @@ li {
   background-color: grey;
 }
 
+.open--position--btn {
+  margin-top: 0.5rem;
+}
+
+.position--link {
+  padding: 0.5rem;
+}
+
+.position--link:hover {
+  background-color: lightgrey;
+}
+
+.single--position--heading {
+  padding: 0.5rem;
+}
 /* ------------------ forms --------------------------- */
 
 .button--form,

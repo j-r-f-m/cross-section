@@ -26,6 +26,7 @@ function ModalCrtPrj(props) {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   // create const to save registerOptions -> cleaner code
@@ -42,6 +43,7 @@ function ModalCrtPrj(props) {
 
     props.setProjectChild(data.projectName);
     props.closeModalChild();
+    reset();
   };
 
   const onFormError = (errors) => console.error(errors);

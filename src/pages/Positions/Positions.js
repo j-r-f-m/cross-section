@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import ModalCreatePosition from "../../components/ModalCreatePosition";
+import { Link } from "react-router-dom";
+
 /**
  * Positions.js gets called when user clicks on project-link in the sidebar
  * user wants to access the different positions belonging to a project
@@ -38,6 +40,10 @@ function Positions(props) {
     (prj) => prj.id === props.currentProjectId
   );
 
+  const test = (e) => {
+    console.log(e.currentTarget.id);
+  };
+
   /**
    *
    * if the passeed string is not empty
@@ -54,11 +60,22 @@ function Positions(props) {
     if (currentProjectId && searchedProject.projectName) {
       return (
         <>
-          <h2 className="positions--heading">{searchedProject.projectName}</h2>
+          <h2 className="heading--main">{searchedProject.projectName}</h2>
           {searchedProject.positionsArr.map((posi) => (
-            <div key={posi.positionName} className="card">
-              <h2>{posi.positionName}</h2>
+            <div key={posi.id} className="card">
+              <h2 className="single--position--heading">{posi.positionName}</h2>
               {/* {posi.positionName ? <h2>{posi.positionName}</h2> : null} */}
+
+              {/* open single position */}
+              <Link
+                id={`${posi.id}`}
+                className="position--link"
+                to="/singlePosition"
+                style={{ textDecoration: "none", color: "black" }}
+                onClick={test}
+              >
+                Open Position
+              </Link>
             </div>
           ))}
           <button className="add--position--btn" onClick={openModal}>

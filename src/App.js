@@ -14,6 +14,7 @@ import Home from "./pages/Home/Home";
 import Zug from "./pages/Zug/Zug";
 import Biegung from "./pages/Bending/Bending";
 import Landing from "./pages/Landing/Landing";
+import SinglePosition from "./pages/SinglePosition/SinglePosition";
 import Positions from "./pages/Positions/Positions";
 import Side from "./pages/Side/Side";
 import Modal from "react-modal";
@@ -51,10 +52,11 @@ function App() {
   const [projects, setProjects] = useState([
     {
       projectName: "test project 1",
-      id: uniqid(),
+      id: "prj-" + uniqid(),
       positionsArr: [
         {
           positionName: "name of position1",
+          id: "posi-" + uniqid(),
           calculationsArr: [
             {
               calculationName: "Einachsiger Biegespannungsnachweis",
@@ -74,10 +76,11 @@ function App() {
     },
     {
       projectName: "test project 2",
-      id: uniqid(),
+      id: "prj-" + uniqid(),
       positionsArr: [
         {
           positionName: "name of position2",
+          id: "posi-" + uniqid(),
           calculationsArr: [
             {
               calculationName: "Einachsiger Biegespannungsnachweis",
@@ -97,10 +100,11 @@ function App() {
     },
     {
       projectName: "test project 3",
-      id: uniqid(),
+      id: "prj-" + uniqid(),
       positionsArr: [
         {
           positionName: "name of position3",
+          id: "posi-" + uniqid(),
           calculationsArr: [
             {
               calculationName: "Einachsiger Biegespannungsnachweis",
@@ -128,6 +132,12 @@ function App() {
   const [currentProjectId, setCurrentProjectId] = useState("");
 
   /**
+   * state for current chosen position
+   */
+
+  const [currentPositionId, setCurrentPositionId] = useState("");
+
+  /**
    * create new empty project object
    * updates projects array with a new project
    * @param {string} projectName name of new project
@@ -143,22 +153,23 @@ function App() {
       // add new project-object as last element
       {
         projectName: `${projectName}`,
-        id: uniqid(),
+        id: "prj-" + uniqid(),
         // position-array
         positionsArr: [
           // position-objects
-          {
-            positionName: "",
-            // calculations-array
-            calculations: [],
-          },
+          // {
+          //   positionName: "",
+          //   id: "posi-" + uniqid(),
+          //   // calculations-array
+          //   calculations: [],
+          // },
         ],
       },
     ]);
   };
 
   /**
-   * create a new position object -> add position-object to specifieed project's
+   * create a new position object and add position-object to specified project's
    * position-array
    * @param {string} projectId id of porject we want to add the position ton
    *
@@ -177,7 +188,11 @@ function App() {
     console.log(updatedProject);
     updatedProject.positionsArr = [
       ...updatedProject.positionsArr,
-      { positionName: newPositonName, calculationsArr: [] },
+      {
+        positionName: newPositonName,
+        calculationsArr: [],
+        id: "posi-" + uniqid(),
+      },
     ];
 
     const updatedProjectsArray = [
@@ -250,6 +265,15 @@ function App() {
                   projects={projects}
                   currentProjectId={currentProjectId}
                   setPositionsChild={setPositionsChild}
+                />
+              }
+            />
+            <Route
+              path="/singlePosition"
+              element={
+                <SinglePosition
+                  projects={projects}
+                  currentPositionId={currentPositionId}
                 />
               }
             />
