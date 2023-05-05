@@ -58,6 +58,7 @@ function Positions(props) {
           {searchedProject.positionsArr.map((posi) => (
             <div key={posi.positionName} className="card">
               <h2>{posi.positionName}</h2>
+              {/* {posi.positionName ? <h2>{posi.positionName}</h2> : null} */}
             </div>
           ))}
           <button className="add--position--btn" onClick={openModal}>

@@ -5,7 +5,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 function ModalCreatePosition(props) {
   //   const [modalIsOpen, setIsOpen] = useState(false);
-  const ref = useRef(null);
+
   /* add custom styles to react-modal */
   const customStyles = {
     content: {
@@ -26,6 +26,7 @@ function ModalCreatePosition(props) {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   // create const to save registerOptions -> cleaner code
@@ -45,12 +46,17 @@ function ModalCreatePosition(props) {
     console.log(data);
     props.setPositionsChild(props.currentProjectId, data.positionName);
     props.closeModalChild();
-    ref.current.value = "";
+    // reset form
+    reset();
   };
 
-  const wrapHref = () => {
+  /**
+   * handleClose() gets called when user closes modal without submitting it
+   */
+  const handleClose = () => {
     props.closeModalChild();
-    ref.current.value = "";
+    // reset form
+    reset();
   };
 
   const onFormError = (errors) => console.error(errors);
@@ -74,7 +80,7 @@ function ModalCreatePosition(props) {
         <h2>Create a new Position</h2>
         <button
           id="modal--close--btn"
-          onClick={wrapHref}
+          onClick={handleClose}
           style={{
             border: "none",
             padding: "0px",
@@ -97,7 +103,6 @@ function ModalCreatePosition(props) {
         <div id="input--container">
           <label>Position Name:</label>
           <input
-            ref={ref}
             name="positionName"
             type="text"
             placeholder="Position Name:"
