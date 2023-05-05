@@ -40,8 +40,9 @@ function Positions(props) {
     (prj) => prj.id === props.currentProjectId
   );
 
-  const test = (e) => {
+  const setCurrentPositionId = (e) => {
     console.log(e.currentTarget.id);
+    props.setCurrentPositionIdChild(e.currentTarget.id);
   };
 
   /**
@@ -72,7 +73,8 @@ function Positions(props) {
                 className="position--link"
                 to="/singlePosition"
                 style={{ textDecoration: "none", color: "black" }}
-                onClick={test}
+                // setCurrentPositionId
+                onClick={setCurrentPositionId}
               >
                 Open Position
               </Link>

@@ -219,6 +219,13 @@ function App() {
     setCurrentProjectId(projectId);
   };
 
+  /**
+   *
+   */
+  const setCurrentPositionIdChild = (positionId) => {
+    setCurrentPositionId(positionId);
+  };
+
   // const naivgate = useNavigate();
 
   /**
@@ -265,6 +272,7 @@ function App() {
                   projects={projects}
                   currentProjectId={currentProjectId}
                   setPositionsChild={setPositionsChild}
+                  setCurrentPositionIdChild={setCurrentPositionIdChild}
                 />
               }
             />
