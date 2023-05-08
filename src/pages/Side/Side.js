@@ -68,6 +68,7 @@ function Side(props) {
                 to="/positions"
                 style={{ textDecoration: "none", color: "black" }}
                 onClick={getProjectById}
+                className="sidebar--project--link"
               >
                 {prj.projectName}
               </Link>

@@ -116,6 +116,29 @@ li {
   border-radius: 1.5rem;
 }
 
+.card--hr {
+  width: 100%;
+  border-width: 3px;
+}
+
+.card--heading--container {
+  display: flex;
+  align-items: center;
+}
+
+.card--close--btn {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  height: 2rem;
+}
+
+.card--close--icon:hover {
+  background-color: lightgray;
+}
+
 .add--position--btn {
   margin-top: 2rem;
   padding: 1rem;
@@ -137,6 +160,7 @@ li {
 
 .position--link {
   padding: 0.5rem;
+  border-top: 1px solid black;
 }
 
 .position--link:hover {
@@ -251,7 +275,8 @@ input,
 
 #sidebar--button--plus:hover,
 .sidebar--dots--btn:hover,
-.sidebar--open--btn:hover {
+.sidebar--open--btn:hover,
+.sidebar--project--link:hover {
   background-color: grey;
 }
 
@@ -261,6 +286,7 @@ input,
   align-items: center;
 }
 
+/* same as .card--close--btn */
 .sidebar--dots--btn,
 .sidebar--open--btn {
   background-color: lightgray;
@@ -274,6 +300,11 @@ input,
 .sidebar--dots--btn {
   margin-left: 0.5rem;
 }
+
+.sidebar--project--link {
+  padding: 0.25rem;
+}
+
 /* ------------------------------ cards ------------------------------------ */
 
 /* ------------------------------- Modal ---------------------------------- */

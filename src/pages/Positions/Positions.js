@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
+import CloseIcon from "@mui/icons-material/Close";
 import ModalCreatePosition from "../../components/ModalCreatePosition";
 import { Link } from "react-router-dom";
 
@@ -40,6 +41,10 @@ function Positions(props) {
     (prj) => prj.id === props.currentProjectId
   );
 
+  /**
+   * set state for PositionId
+   * @param {object} e event-object
+   */
   const setCurrentPositionId = (e) => {
     console.log(e.currentTarget.id);
     props.setCurrentPositionIdChild(e.currentTarget.id);
@@ -64,7 +69,14 @@ function Positions(props) {
           <h2 className="heading--main">{searchedProject.projectName}</h2>
           {searchedProject.positionsArr.map((posi) => (
             <div key={posi.id} className="card">
-              <h2 className="single--position--heading">{posi.positionName}</h2>
+              <div className="card--heading--container">
+                <h2 className="single--position--heading">
+                  {posi.positionName}
+                </h2>
+                <button className="card--close--btn">
+                  <CloseIcon className="card--close--icon" />
+                </button>
+              </div>
               {/* {posi.positionName ? <h2>{posi.positionName}</h2> : null} */}
 
               {/* open single position */}

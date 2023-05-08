@@ -125,14 +125,20 @@ function App() {
   ]);
 
   /**
-   * state for current chosen position
+   * state for current chosen project
    *
-   * save project id of the project the user wants to see the positions
+   * we need a state to be able to find the project in the projects array
+   * if a user clicks on a project in the sidebar the id of the link will be
+   * saved to state. Positions.js is going to be called and will show the
+   * information correspoding to the clicked project-object with the saved
+   * id-string (see searchedProject() in Positions.js)
    */
   const [currentProjectId, setCurrentProjectId] = useState("");
 
   /**
    * state for current chosen position
+   *
+   * we need
    */
 
   const [currentPositionId, setCurrentPositionId] = useState("");
@@ -169,6 +175,20 @@ function App() {
   };
 
   /**
+   * delete project from projects array
+   * pass function to child (side)
+   * -- Add prompt so user needs to confirm deletion
+   */
+  const setPrjsChildDlt = (e) => {
+    console.log(e.currentTarget.id);
+    setProjects(projects.filter((prj) => prj.id !== e.currentTarget.id));
+
+    // reset state for currentProjectId because the id does no exist after
+    // corresponding project got deleted
+    setCurrentProjectId("");
+  };
+
+  /**
    * create a new position object and add position-object to specified project's
    * position-array
    * @param {string} projectId id of porject we want to add the position ton
@@ -202,7 +222,13 @@ function App() {
     ];
 
     setProjects(updatedProjectsArray);
+
+    setCurrentPositionId("");
   };
+
+  // const setPositonsChildDelete() {
+
+  // }
 
   /**
    *
@@ -227,20 +253,6 @@ function App() {
   };
 
   // const naivgate = useNavigate();
-
-  /**
-   * delete project from projects array
-   * pass function to child (side)
-   * -- Add prompt so user needs to confirm deletion
-   */
-  const setPrjsChildDlt = (e) => {
-    console.log(e.currentTarget.id);
-    setProjects(projects.filter((prj) => prj.id !== e.currentTarget.id));
-
-    // reset state for currentProjectId because the id does no exist after
-    // corresponding project got deleted
-    setCurrentProjectId("");
-  };
 
   // const [pageNameArray, setPageNameArray] = useState(["Home"]);
 
@@ -281,6 +293,7 @@ function App() {
               element={
                 <SinglePosition
                   projects={projects}
+                  currentProjectId={currentProjectId}
                   currentPositionId={currentPositionId}
                 />
               }
