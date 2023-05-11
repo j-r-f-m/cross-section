@@ -191,7 +191,7 @@ function App() {
   /**
    * create a new position object and add position-object to specified project's
    * position-array
-   * @param {string} projectId id of porject we want to add the position ton
+   * @param {string} projectId id of porject we want to add the position to
    *
    * function to change positions-array from a child component
    * -> use function in ModalCrtPrj.js
@@ -202,10 +202,16 @@ function App() {
     const currentProjectIndex = projects.findIndex(
       (prj) => prj.id === projectId
     );
-    // create new object with the contents of the project we want to change
+    /**
+     * create new target object and copy contents from source object to target
+     * object
+     */
     const updatedProject = Object.assign({}, projects[currentProjectIndex]);
-    // update positions-array with new empty position-object
-    console.log(updatedProject);
+    /**
+     * update positions-array with new empty position-object
+     * 1. override "old" content by spreading the "old"-content into the
+     * positions-array and add the new object to the end of the array
+     */
     updatedProject.positionsArr = [
       ...updatedProject.positionsArr,
       {
@@ -215,20 +221,65 @@ function App() {
       },
     ];
 
+    /**
+     * create new projects-array and spread the "old"-contents into the new
+     * array. insert the updated (with new position) project-object
+     */
     const updatedProjectsArray = [
       ...projects.slice(0, currentProjectIndex),
       updatedProject,
       ...projects.slice(currentProjectIndex + 1),
     ];
 
+    // update state of projects-array
     setProjects(updatedProjectsArray);
 
     setCurrentPositionId("");
   };
 
-  // const setPositonsChildDelete() {
+  /**
+   * delete position from specified project array
+   *
+   *
+   * - get index of project-object
+   * - create new project-object
+   * - get index of position-object
+   */
+  const setPositonsChildDelete = () => {
+    /**
+     * in order to delete a position from a project-object we need to get
+     * access to the project-object. With the help of the project-id we can get
+     * the index of the project-object. Then to be able to find the project-object in the project
+     */
 
-  // }
+    const currentProjectIndex = projects.findIndex(
+      (prj) => prj.id === currentProjectId
+    );
+    console.log("wip");
+    console.log(currentProjectIndex);
+
+    // get project that contains position we want to delete
+    const updatedProject = Object.assign({}, projects[currentProjectIndex]);
+
+    // get positionsArray we want to delete a position from
+
+    const positionsArray = updatedProject.positionsArr;
+    console.log(positionsArray);
+
+    // get index of position we want to delete
+    const currentPositionIndex = projects.findIndex(
+      (prj) => prj.id === currentProjectId
+    );
+
+    //https://jaketrent.com/post/remove-array-element-without-mutating/
+    const newPositionsArr = [
+      ...positionsArray.slice(0, currentPositionIndex),
+      ...positionsArray.slice(currentPositionIndex + 1),
+    ];
+    // delete element from array
+
+    console.log(newPositionsArr);
+  };
 
   /**
    *
@@ -283,7 +334,9 @@ function App() {
                 <Positions
                   projects={projects}
                   currentProjectId={currentProjectId}
+                  currentPositionId={currentPositionId}
                   setPositionsChild={setPositionsChild}
+                  setPositionsChildDelete={setPositonsChildDelete}
                   setCurrentPositionIdChild={setCurrentPositionIdChild}
                 />
               }

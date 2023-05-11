@@ -51,6 +51,15 @@ function Positions(props) {
   };
 
   /**
+   * delete position from project
+   */
+
+  const deletePositon = (e) => {
+    console.log("lol");
+    props.setPositionsChildDelete(e.currentTarget.id);
+  };
+
+  /**
    *
    * if the passeed string is not empty
    * @param {object} param0 object containing project-id string
@@ -73,7 +82,14 @@ function Positions(props) {
                 <h2 className="single--position--heading">
                   {posi.positionName}
                 </h2>
-                <button className="card--close--btn">
+                <button
+                  /*      onClick={props.setPositonsChildDelete(
+                    props.currentProjectId,
+                    props.setCurrentPositionId
+                  )} */
+                  onClick={deletePositon}
+                  className="card--close--btn"
+                >
                   <CloseIcon className="card--close--icon" />
                 </button>
               </div>
