@@ -89,6 +89,7 @@ function Positions(props) {
                   )} */
                   onClick={deletePositon}
                   className="card--close--btn"
+                  id={posi.id}
                 >
                   <CloseIcon className="card--close--icon" />
                 </button>

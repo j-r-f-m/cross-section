@@ -241,11 +241,11 @@ function App() {
    * delete position from specified project array
    *
    *
-   * - get index of project-object
-   * - create new project-object
+   * - get index of project-object we want to delete a position from
+   * - create new project-object to update the project-object without mutation
    * - get index of position-object
    */
-  const setPositonsChildDelete = () => {
+  const setPositonsChildDelete = (posiID) => {
     /**
      * in order to delete a position from a project-object we need to get
      * access to the project-object. With the help of the project-id we can get
@@ -255,21 +255,25 @@ function App() {
     const currentProjectIndex = projects.findIndex(
       (prj) => prj.id === currentProjectId
     );
-    console.log("wip");
+
     console.log(currentProjectIndex);
 
     // get project that contains position we want to delete
     const updatedProject = Object.assign({}, projects[currentProjectIndex]);
 
-    // get positionsArray we want to delete a position from
-
+    /**
+     * get positionsArray from the project-object we want to delete a position
+     * from
+     */
     const positionsArray = updatedProject.positionsArr;
-    console.log(positionsArray);
 
     // get index of position we want to delete
-    const currentPositionIndex = projects.findIndex(
-      (prj) => prj.id === currentProjectId
+    const currentPositionIndex = positionsArray.findIndex(
+      (posi) => posi.id === posiID
     );
+
+    console.log(posiID);
+    console.log(currentPositionIndex);
 
     //https://jaketrent.com/post/remove-array-element-without-mutating/
     const newPositionsArr = [
@@ -277,6 +281,10 @@ function App() {
       ...positionsArray.slice(currentPositionIndex + 1),
     ];
     // delete element from array
+
+    const currentProjectsArr = [...projects];
+    currentProjectsArr[currentProjectIndex].positionsArr = [...newPositionsArr];
+    setProjects(currentProjectsArr);
 
     console.log(newPositionsArr);
   };
