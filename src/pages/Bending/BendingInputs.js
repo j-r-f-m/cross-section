@@ -42,6 +42,8 @@ function BendingInputs(props) {
     );
   });
 
+  console.log(props.currentPosition);
+
   return (
     <form id="bending--inputs--form" onSubmit={(e) => e.preventDefault()}>
       <label>
@@ -50,6 +52,7 @@ function BendingInputs(props) {
       <input
         type="number"
         id="myd--input"
+        value={props.currentPosition.myd ? props.currentPosition.myd : ""}
         {...register("myd", {
           required: {
             value: true,

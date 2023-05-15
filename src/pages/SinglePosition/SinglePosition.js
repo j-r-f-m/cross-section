@@ -1,4 +1,5 @@
 import React from "react";
+import Bending from "../Bending/Bending";
 
 function SinglePosition(props) {
   const searchedProject = props.projects.find(
@@ -18,17 +19,20 @@ function SinglePosition(props) {
     searchedPosition = searchPosition;
   } catch (error) {}
 
-  console.log(props.currentProjectId);
+  /*   console.log(props.currentProjectId);
   console.log(searchedProject);
-  console.log(searchedPosition);
+  console.log(searchedPosition); */
 
   return (
     <div className="main--container">
       {props.currentProjectId && searchedPosition.positionName ? (
-        <h2 className="heading--main">
-          Project: {searchedProject.projectName} - Position:{" "}
-          {searchedPosition.positionName}
-        </h2>
+        <>
+          <h2 className="heading--main">
+            Project: {searchedProject.projectName} - Position:{" "}
+            {searchedPosition.positionName}
+          </h2>
+          <div className="calculations--container"></div>
+        </>
       ) : (
         <></>
       )}

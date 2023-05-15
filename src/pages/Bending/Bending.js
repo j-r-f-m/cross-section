@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import BendingInputs from "./BendingInputs";
 import BendingOutputs from "./BendingOutputs";
 
-function Bending() {
+function Bending(props) {
   // object that holds data for calculation
   const [state, setState] = useState({
     data: {
@@ -61,12 +61,17 @@ function Bending() {
     });
   };
 
+  console.log(props.currentPosition);
+
   return (
     <div id="bending--container">
       <h2 className="bending--h2">Einachsiger Biegespannungsnachweis:</h2>
 
       <div id="bending--container--flex">
-        <BendingInputs setStateChild={setStateChild} />
+        <BendingInputs
+          setStateChild={setStateChild}
+          currentPosition={props.currentPosition}
+        />
         {/* <BtnCalc startCalculation={startCalculation} /> */}
         <BendingOutputs state={state} />
       </div>

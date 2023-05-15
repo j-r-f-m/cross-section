@@ -2,22 +2,12 @@ import "./assets/styles.css";
 import React, { useState } from "react";
 import Header from "./pages/Header/Header.js";
 import { MathJaxContext } from "better-react-mathjax";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  RouterProvider,
-  Router,
-  useNavigate,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
-import Zug from "./pages/Zug/Zug";
-import Biegung from "./pages/Bending/Bending";
-import Landing from "./pages/Landing/Landing";
+import Bending from "./pages/Bending/Bending";
 import SinglePosition from "./pages/SinglePosition/SinglePosition";
 import Positions from "./pages/Positions/Positions";
 import Side from "./pages/Side/Side";
-import Modal from "react-modal";
 import uniqid from "uniqid";
 
 // defining config for MathJax
@@ -335,7 +325,7 @@ function App() {
             <Route path="/" element={<Home projects={projects} />} />
             {/* links */}
             <Route path="/home" element={<Home projects={projects} />} />
-            <Route path="/biegung" element={<Biegung />} />
+            <Route path="/biegung" element={<Bending />} />
             <Route
               path="/positions"
               element={
